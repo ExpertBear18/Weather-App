@@ -1,18 +1,34 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import './styles/weatherCard.css'
 
-const WeatherCard = ({ weather, temp }) => {
+const WeatherCard = ({ weather, temp, setTextInput }) => {
   const [changeTemp, setChangeTemp] = useState(true);
 
   const handleChange = () => {
     setChangeTemp(!changeTemp);
   };
 
+  const city = useRef();
+
+  const handleForm = event => {
+    event.preventDefault();
+    setTextInput(city.current.value.toLowerCase().trim())
+  }
+
   return (
     <section className="card__weather">
       <h1 className="weather__title">
         Weather App
       </h1>
+      <form
+      onSubmit={handleForm}
+      className="weather__form">
+        <input className="input__weather" type="text" ref={city}/>
+        <button className="button__form">
+          Search
+          <i class='bx bx-search-alt'></i>
+        </button>
+      </form>
       <h2 className="weather__city">
         {weather?.name}, {weather?.sys.country}
       </h2>
@@ -23,7 +39,7 @@ const WeatherCard = ({ weather, temp }) => {
             src={`https://openweathermap.org/img/wn/${weather?.weather[0].icon}@2x.png`}alt="weather icon" />
         </figure>
         <div className="weather__info">
-          <h3 className="weather__clouds">{weather?.weather[0].description}</h3>
+          <h3 className="weather__clouds">"{weather?.weather[0].description}"</h3>
           <ul>
             <li>
               <span className="info__title">Wind speed: </span>

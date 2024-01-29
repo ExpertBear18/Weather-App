@@ -14,6 +14,30 @@
     font-weight: 600;
 }
 
+.weather__form {
+    margin: 1rem 0;
+}
+
+.input__weather {
+    border-radius: 10px;
+    padding: 3px;
+    border: none;
+}
+
+.button__form {
+    margin-left: 10px;
+    padding: 3px;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    transition: transform .5s;
+}
+
+.button__form:hover {
+    transform: scale(1.1);
+    transition: transform .5s;
+  }
+
 .weather__city {
     margin-bottom: 1rem;
     font-weight: 200;
@@ -32,7 +56,13 @@
 }
 
 .weather__fig {
+    width: 200px;
     display: flex;
+    justify-content: center;
+}
+
+.weather__img {
+    height: 150px;
 }
 
 .weather__info {
@@ -51,7 +81,6 @@
 }
 
 .weather__btn {
-    cursor: pointer;
     border-radius: 5px;
     padding: 8px 20px;
     box-shadow: 9px 5px 19px -5px;
@@ -63,4 +92,30 @@
 .weather__btn:hover {
     transform: scale(1.1);
     transition: transform .5s;
+  }
+
+
+  @media (max-width: 720px) {
+    .weather__container1 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .weather__fig {
+        justify-content: center;
+    }
+
+    .weather__img {
+        margin-top: -3rem;
+    }
+
+    .card__weather {
+        width: 43vh;
+    }
+  }
+
+  @media (min-width: 720px) {
+    .card__weather {
+        width: 60vh;
+    }
   }
